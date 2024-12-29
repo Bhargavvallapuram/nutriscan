@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!--=============== REMIXICONS ===============-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+
+      <!--=============== CSS ===============-->
+      <link rel="stylesheet" href="assets/css/styles.css">
+      <link rel="stylesheet" href="assets/css/form.css">
+	  <style>
+	          .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+        }
+        
+        
+        .center input[type="file"],
+        .center input[type="submit"] {
+            font-size: 20px; 
+            padding: 10px 20px; 
+            margin: 0 10px; 
+            cursor: pointer;
+        }
+
+
+
+body {
+      
+      
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f9;
+  color:black;
+  margin: 0;
+  font-family: Arial, sans-serif;
+    }
+
+    .container {
+      background-color: #e9f7f6;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 550px;
+    }
+
+
+
+        .box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            width: 100%;
+            text-align: center;
+			margin-left:90px;
+        }
+
+        .box input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .box button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .box button:hover {
+            background-color: #45a049;
+        }
+		.boxrecom
+		{
+			margin-top:50px;
+		}
+		.box2
+		{
+            background-color: #ffffff;
+            
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            width: 100%;
+			
+            text-align: center;
+			margin-left:90px;	
+			
+		}
+		.box2 p
+		{
+			text-align: left;
+			padding-left:40px;
+			padding top:20px;
+		}
+		.section-title {
+            margin-bottom: 10px;
+        }
+
+        .button2 {
+            background-color: #1E90FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .section1 {
+            margin-bottom: 20px;
+        }
+
+        .view-history-button {
+            margin-top: 15px;
+        }
+
+        .tasks-title1 {
+            font-weight: bold;
+            color: black;
+        }
+        .profile-container {
+            text-align: left;
+			margin-left:25px;
+        }
+
+        .profile-img {
+            width: 75px;
+            height:75px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .edit-link {
+            color: #1E90FF;
+            text-decoration: none;
+            font-size: 10px;
+        }
+
+        .edit-link:hover {
+            text-decoration: underline;
+        }
+
+.circle-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.5s ease;
+}
+
+.circle-inner {
+  z-index: 1;
+  font-size: 18px;
+  color: black;
+}
+
+.circle::before {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #f4f4f9;
+}
+
+.circle-item p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+}
+
+.color1{
+  color:black;
+}
+
+/* Different colors for each circle */
+#fat {
+  background: conic-gradient(#FF6347 0%, #e0e0e0 0%);
+}
+
+#carbohydrates {
+  background: conic-gradient(#FFD700 0%, #e0e0e0 0%);
+}
+
+#protein {
+  background: conic-gradient(#32CD32 0%, #e0e0e0 0%);
+}
+
+#calories {
+  background: conic-gradient(#1E90FF 0%, #e0e0e0 0%);
+}
+
+		</style>
+
+   </head>
+  <body>
+      <!--=============== NAVBAR ===============-->
+    <nav class="nav">
+      <ul class="nav__list">
+         <li><a href="/home" class="nav__link active-link"><i class="ri-home-smile-2-line"></i></a></li>
+         <li><a href="http://127.0.0.1:5000/API?name=<%= locals.name %>" class="nav__link"><img src="assets/img/a3.png"  style="width:45px"></a></li>
+		     <li><a href="/history" class="nav__link"><img src="assets/img/a5.png"  style="width:25px"></a></li>  
+         <li><a href="/help" class="nav__link"><img src="assets/img/a4.png"  style="width:25px"></a></li>
+      </ul>
+   </nav>
+      <!--==================== MAIN ====================-->
+      <main class="container">
+	  
+         <section class="section" id="home">
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			<div class="profile-container">
+        <img src="assets/img/a9.png" alt="Profile Picture" class="profile-img"><p style="font-size:25px;">welcome <%= locals.name %></p>
+        <br><br>
+       <!-- <select name="donation" id="donation">
+                                                        <option value="">weight loss</option>
+                                                        <option value="food">weight gain</option>
+                                                    </select>-->
+		<!--<br>
+        <a href="profile.html" class="edit-link">Edit Your Profile</a>-->
+    </div>
+    
+	<div class="box">
+    <form action="/goal" method="post">
+      Enter your calaries<input name="calaries" type="text" placeholder="calaries ">
+      Enter protien Goal<input type="text" name="protien" placeholder="protien">
+      Enter fat Goal<input type="text" name="fat" placeholder="protien">
+      Enter carbohydrates Goal<input type="text" name="carbohydrates" placeholder="protien">
+      <button type="submit">Set Goal</button>
+    </form>
+	</div>
+		<div class="box2 boxrecom">
+		<br>
+			<h3 style="text-color:blue;">Daily recommdations
+			</h3>
+			<br>
+			<p>Calories:<%=locals.calaries %></p>
+			<br>
+			<p>Proteins:<%= locals.protien %></p>
+			<br>
+      <p>fat:<%= locals.fat %></p>
+			<br>
+			<p>carbohydrates:<%= locals.carbohydrates %></p>
+			<br>
+		</div>
+<br><br>
+
+    
+
+  <div class="circle-container">
+    <div class="circle-item">
+      <div class="circle" id="fat">
+        <div class="circle-inner color1" id="fat-percent">0%</div>
+      </div>
+      <p>Fat</p>
+    </div>
+
+    <div class="circle-item">
+      <div class="circle" id="carbohydrates">
+        <div class="circle-inner" id="carbohydrates-percent">0%</div>
+      </div>
+      <p>Carbohydrates</p>
+    </div>
+
+    <div class="circle-item">
+      <div class="circle" id="protein">
+        <div class="circle-inner" id="protein-percent">0%</div>
+      </div>
+      <p>Protein</p>
+    </div>
+
+    <div class="circle-item">
+      <div class="circle" id="calories">
+        <div class="circle-inner" id="calories-percent">0%</div>
+      </div>
+      <p>Calories</p>
+    </div>
+  </div>
+
+	<!--<div class="box2 boxrecom">
+   <div class="section1">
+        <h2 class="section-title">Daily Tasks</h2>
+        <button class="button2">Scan Food</button>
+        <button class="button2">Add Task</button>
+    </div>
+
+    <div class="section1">
+        <p class="tasks-title1">Tasks</p>
+        <a href="history.html"><button class="button2 view-history-button">View History</button></a>
+    </div>
+	</div>-->
+	
+
+         </section>
+
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      </main>
+      
+      <!--=============== MAIN JS ===============-->
+      <script>
+        // Simulating backend data fetch for nutrition values
+const nutritionData = {
+  fat: 20,
+  carbohydrates: 60,
+  protein: 30,
+  calories: 90
+};
+
+function updateCircle(circleId, percentage) {
+  const circle = document.getElementById(circleId);
+  const circleInner = document.getElementById(circleId + '-percent');
+
+  // Update the circle background based on the percentage
+  circle.style.background = `conic-gradient(${getColor(circleId)} ${percentage}%, #e0e0e0 ${percentage}%)`;
+
+  // Update the text inside the circle
+  circleInner.textContent = `${percentage}%`;
+}
+
+
+function getColor(circleId) {
+  switch(circleId) {
+    case 'fat': return '#FF6347'; // Tomato color
+    case 'carbohydrates': return '#FFD700'; // Gold color
+    case 'protein': return '#32CD32'; // LimeGreen color
+    case 'calories': return '#1E90FF'; // DodgerBlue color
+    default: return '#000000';
+  }
+}
+
+// Simulate data update from backend
+function loadCircleData() {
+  updateCircle('fat', nutritionData.fat);
+  updateCircle('carbohydrates', nutritionData.carbohydrates);
+  updateCircle('protein', nutritionData.protein);
+  updateCircle('calories', nutritionData.calories);
+}
+
+// Load the data when the page loads
+window.onload = loadCircleData;
+      </script>
+   </body>
+</html>

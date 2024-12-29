@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+   <link rel="stylesheet" href="assets/css/styles.css">
+   <link rel="stylesheet" href="assets/css/form.css">
+   <link rel="stylesheet" href="assets/css/styles2.css">
+</head>
+<body>
+   
+   <nav class="nav">
+      <ul class="nav__list">
+         <li><a href="HOME.html" class="nav__link active-link"><i class="ri-home-smile-2-line"></i></a></li>
+         <li><a href="ABOUT.html" class="nav__link"><img src="assets/img/a3.png"  style="width:45px"></a></li>
+         <li>
+            <button class="nav__expand" id="nav-expand">
+               <i class="ri-add-line nav__expand-icon" id="nav-expand-icon"></i>
+            </button>
+            <ul class="nav__expand-list" id="nav-expand-list">
+               <li><a href="#" class="nav__expand-link"><i class="ri-image-2-line"></i><span>Gallery</span></a></li>
+               <li><a href="#" class="nav__expand-link"><i class="ri-archive-line"></i><span>Files</span></a></li>
+               <li><a href="#" class="nav__expand-link"><i class="ri-bookmark-3-line"></i><span>Saved</span></a></li>
+            </ul>
+         </li>
+		 <li><a href="" class="nav__link"><img src="assets/img/a5.png"  style="width:25px"></a></li>
+         
+         <li><a href="#" class="nav__link"><img src="assets/img/a4.png"  style="width:25px"></a></li>
+      </ul>
+   </nav>
+
+   <main class="container">
+      <section>
+         <section class="section" id="home">
+         <div class="hero">
+            <div class="form-box">
+               <div class="button-box">
+                  <div id="btn"></div>
+                  <button type="button" class="toggle-btn" onclick="login()">LogIn</button>
+                  <button type="button" class="toggle-btn" onclick="register()">Register</button>
+               </div>
+               <form id="login" class="input-group" method="POST" action="/login">
+                  <input name="userName" type="text" class="input-field" placeholder="Enter user id" required>
+                  <input name="password" type="password" class="input-field" placeholder="Enter password" required>
+                  <input type="checkbox" class="check-box"><span>Remember password</span>
+                  <button type="submit" class="submit-btn">Log In</button> 
+               </form>
+               
+               <form id="register" class="input-group" method="post" style="left: 450px;" action="/register">
+                  <input type="text" class="input-field" placeholder="User id" required>
+                  <input type="email" class="input-field" placeholder="Email id" required>
+                  <input type="password" class="input-field" placeholder="Enter password" required>
+                  <input type="checkbox" class="check-box"><span>I agree to the terms and conditions</span>
+                  <button type="button" class="submit-btn">Register</button>
+               </form>
+            </div>
+         </div>
+      </section>
+
+      <section >
+         
+      </section>
+	  <section>
+
+	  </section>
+   </main>
+
+   
+   
+   <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Webcam Object Detection</title>
+    <style>
+        body { text-align: center; }
+        video { width: 60%; }
+        button { margin-top: 20px; margin-right: 10px; }
+        body { text-align: center; }
+        video { width: 60%; }
+        button { margin-top: 20px; margin-right: 10px; }
+        .box5
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            max-width: 400px;
+            height: 500px;
+            border-radius: 50px;
+            background-color: #FEECB3;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+.scan
+{
+    background-color: #FFD700;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+    </style>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+</head>
+<body style="background-image: url('bg2.png');
+background-repeat: no-repeat;
+background-size: cover;">
+
+    <h1 style="margin-top: 200px;">Scan food </h1>
+    <div class="next">
+        <img id="video" autoplay>
+    </div>
+            <button onclick="startDetection()" class="scan">Scan</button>
+            <button onclick="stopDetection()" class="scan">Cancel</button>
+            <button onclick="eatCalories()"class="scan">Eat</button>
+    <div id="nutrients-popup" style="display:none;">
+        <h3>Nutritional Information</h3>
+        <div id="nutrients-details"></div>
+    </div>
+
+    <div id="nutrients-popup" style="display:none;">
+        <h3>Nutritional Information</h3>
+        <div id="nutrients-details"></div>
+    </div>
+
+    <script>
+        let totalCalories = 0;
+        const socket = io();
+
+        socket.on('detected_food', function(data) {
+            const popup = document.getElementById('nutrients-popup');
+            const details = document.getElementById('nutrients-details');
+
+            details.innerHTML = `
+                <p>Calories: ${data.Calories}</p>
+                <p>Carbohydrates: ${data.Carbohydrates}</p>
+                <p>Fats: ${data.Fats}</p>
+                <p>Proteins: ${data.Proteins}</p>
+                <p>Vitamins: ${data.Vitamins}</p>
+            `;
+            popup.style.display = 'block';
+        });
+
+        async function startDetection() {
+            await fetch('/start_feed', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.message);
+                    document.getElementById('video').src = "{{ url_for('video_feed') }}";
+                })
+                .catch(error => console.error('Error starting feed:', error));
+        }
+
+        async function stopDetection() {
+            await fetch('/stop_feed', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.message);
+                    document.getElementById('video').src = "";
+                })
+                .catch(error => console.error('Error stopping feed:', error));
+        }
+
+        function eatCalories() {
+            let detectedCalories = 105;
+            fetch('/eat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ calories: detectedCalories })
+            })
+            .then(response => response.json())
+            .then(data => {
+                totalCalories = data.total_calories;
+                alert(`Total Calories Consumed: ${totalCalories} kcal`);
+            })
+            .catch(error => console.error('Error consuming calories:', error));
+        }
+    </script>
+</body>
+</html> 
